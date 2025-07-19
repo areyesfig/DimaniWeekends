@@ -1,79 +1,89 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# DimaniWeekends - React Native App
 
-# Getting Started
+Una aplicación simple de React Native que muestra "¡Hola Mundo!" como punto de partida.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## 🚀 Estado del Proyecto
 
-## Step 1: Start the Metro Server
+✅ **Android**: Funcionando correctamente  
+⚠️ **iOS**: Requiere configuración adicional de CocoaPods
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## 📱 Cómo Ejecutar
 
-To start Metro, run the following command from the _root_ of your React Native project:
+### Para Android
+
+1. **Asegúrate de tener un emulador de Android ejecutándose** o un dispositivo conectado
+2. **Ejecuta el proyecto**:
+   ```bash
+   npx react-native run-android
+   ```
+
+### Para iOS
+
+**Nota**: Actualmente hay un problema con la instalación de CocoaPods debido a un error de checksum con boost. Para solucionarlo:
+
+1. **Abre Xcode**:
+   ```bash
+   open ios/DimaniWeekends.xcworkspace
+   ```
+   
+2. **O ejecuta desde la línea de comandos** (después de solucionar CocoaPods):
+   ```bash
+   npx react-native run-ios
+   ```
+
+## 🔧 Solución de Problemas
+
+### Problema con CocoaPods (iOS)
+
+Si encuentras errores con boost durante la instalación de CocoaPods:
+
+1. **Limpia la caché de CocoaPods**:
+   ```bash
+   cd ios
+   pod cache clean --all
+   ```
+
+2. **Reinstala las dependencias**:
+   ```bash
+   pod install --repo-update
+   ```
+
+3. **Si el problema persiste**, intenta:
+   ```bash
+   cd ios
+   rm -rf Pods Podfile.lock
+   pod install
+   ```
+
+### Verificar el Entorno
+
+Para verificar que todo esté configurado correctamente:
 
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
+npx react-native doctor
 ```
 
-## Step 2: Start your Application
+## 📁 Estructura del Proyecto
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```
+DimaniWeekends/
+├── android/          # Configuración de Android
+├── ios/             # Configuración de iOS
+├── App.tsx          # Componente principal (Hola Mundo)
+├── index.js         # Punto de entrada
+└── package.json     # Dependencias del proyecto
 ```
 
-### For iOS
+## 🎯 Próximos Pasos
 
-```bash
-# using npm
-npm run ios
+1. **Android**: El proyecto está listo para desarrollo
+2. **iOS**: Resolver el problema de CocoaPods para desarrollo completo
+3. **Desarrollo**: Comenzar a agregar funcionalidades específicas de DimaniWeekends
 
-# OR using Yarn
-yarn ios
-```
+## 📞 Soporte
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Si encuentras problemas, verifica:
+- Que tienes Node.js instalado
+- Que tienes React Native CLI configurado
+- Que tienes Android Studio (para Android) y Xcode (para iOS) instalados
+- Que los emuladores están ejecutándose correctamente
