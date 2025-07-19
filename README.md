@@ -1,261 +1,259 @@
-# DimaniWeekends - App de Catálogo y Carrito de Compras
+# 🥟 DimaniWeekends - App de Empanadas y Cachitos
 
-## 📱 Descripción
+Aplicación móvil React Native para pedidos de empanadas y cachitos con restricciones de fin de semana, reserva de stock y integración con Webpay Plus.
 
-DimaniWeekends es una aplicación móvil desarrollada en React Native que permite a los usuarios explorar un catálogo de productos (empanadas y cachitos) y realizar pedidos a través de un carrito de compras integrado con sistema de pago Webpay Plus.
+## 🚀 Características
 
-## ✨ Funcionalidades Implementadas
+### 📱 Funcionalidades Principales
+- **Catálogo de productos** con empanadas y cachitos
+- **Carrito de compras** con persistencia local
+- **Checkout completo** con validaciones de fecha/hora
+- **Restricciones de fin de semana** (sábados/domingos 10:00-14:00)
+- **Reserva de stock** en tiempo real
+- **Integración Webpay Plus** para pagos
+- **Validaciones cliente y servidor**
 
-### 🛍️ Catálogo de Productos
-- **Productos disponibles:**
-  - Empanada de Pino ($1,200)
-  - Empanada Napolitana ($1,300)
-  - Empanada de Queso y Jamón ($1,400)
-  - Cachito de Jamón ($800)
-  - Cachito de Queso ($900)
+### 🛍️ Productos Disponibles
+- **Empanadas:** Pino, Napolitana, Queso y Jamón
+- **Cachitos:** Jamón, Queso
+- **Stock en tiempo real** con reservas automáticas
 
-- **Características del catálogo:**
-  - Filtros por categoría (Todos, Empanadas, Cachitos)
-  - Información detallada de cada producto
-  - Stock en tiempo real
-  - Precios formateados en pesos chilenos
-  - Indicador de productos en el carrito
+### ⏰ Ventana de Pedidos
+- **Días:** Sábados y domingos únicamente
+- **Horario:** 10:00 AM - 2:00 PM
+- **Reserva:** 15 minutos para completar el pago
 
-### 🛒 Carrito de Compras
-- **Funcionalidades:**
-  - Agregar productos con validación de stock
-  - Modificar cantidades (+ y -)
-  - Eliminar productos automáticamente
-  - Cálculo automático del total
-  - Persistencia de datos en AsyncStorage
-  - Badge visual con cantidad de items
+## 🛠️ Tecnologías
 
-### 📋 Checkout y Validaciones
-- **Formulario de entrega:**
-  - Nombre completo, dirección, comuna, teléfono
-  - Selector de fecha y hora de entrega
-  - Validación de horarios (sábados y domingos 10:00-14:00)
-  - Validación de tiempo mínimo de anticipación (2 horas)
+- **Frontend:** React Native CLI + TypeScript
+- **Navegación:** React Navigation v6
+- **Estado:** Context API + AsyncStorage
+- **Backend:** Firebase Firestore + Cloud Functions
+- **Pagos:** Webpay Plus Sandbox
+- **Testing:** Jest + React Native Testing Library
 
-- **Restricciones de fin de semana:**
-  - Solo pedidos para sábados y domingos
-  - Horario restringido de 10:00 a 14:00
-  - Validación en cliente y servidor
+## 📋 Requisitos Previos
 
-### 💳 Sistema de Pago
-- **Webpay Plus Sandbox:**
-  - Integración completa con Transbank
-  - WebView para formulario de pago
-  - Manejo de callbacks y resultados
-  - Pantalla de resultado de pago
+- Node.js 18+
+- React Native CLI
+- Android Studio / Xcode
+- Firebase CLI
+- Plan Blaze de Firebase (para Cloud Functions)
 
-### 🔄 Reserva de Stock
-- **Sistema de reservas:**
-  - Validación de ventana de pedidos
-  - Reserva automática de stock
-  - Expiración de reservas (15 minutos)
-  - Liberación automática de stock expirado
+## 🔧 Instalación
 
-## 🏗️ Arquitectura del Proyecto
+### 1. Clonar y Instalar Dependencias
+
+```bash
+git clone https://github.com/areyesfig/DimaniWeekends.git
+cd DimaniWeekends
+npm install
+```
+
+### 2. Configurar Firebase
+
+**IMPORTANTE:** Sigue las instrucciones detalladas en [FIREBASE_SETUP.md](./FIREBASE_SETUP.md)
+
+1. Actualizar plan de Firebase a Blaze
+2. Habilitar APIs necesarias
+3. Desplegar Firestore y Cloud Functions
+4. Configurar datos iniciales
+
+### 3. Configurar Firebase en la App
+
+1. Descargar `google-services.json` desde Firebase Console
+2. Colocar en `android/app/google-services.json`
+3. Descargar `GoogleService-Info.plist` desde Firebase Console
+4. Colocar en `ios/DimaniWeekends/GoogleService-Info.plist`
+
+### 4. Ejecutar la Aplicación
+
+```bash
+# Android
+npx react-native run-android
+
+# iOS
+npx react-native run-ios
+```
+
+## 🏗️ Arquitectura
+
+### 📁 Estructura del Proyecto
 
 ```
 src/
-├── components/           # Componentes reutilizables
-│   ├── ProductCard.tsx   # Tarjeta de producto
-│   ├── CartItem.tsx      # Item del carrito
-│   └── CartBadge.tsx     # Badge del carrito
-├── context/
-│   └── CartContext.tsx   # Contexto global del carrito
-├── screens/              # Pantallas de la aplicación
-│   ├── CatalogScreen.tsx # Pantalla del catálogo
-│   ├── CartScreen.tsx    # Pantalla del carrito
-│   ├── CheckoutScreen.tsx # Pantalla de checkout
-│   ├── PaymentScreen.tsx # Pantalla de pago
-│   └── PaymentResultScreen.tsx # Resultado de pago
-├── services/
-│   ├── firebaseService.ts # Servicios de Firebase
-│   ├── webpayService.ts   # Servicios de Webpay
-│   ├── productService.ts  # Servicio de productos
-│   └── dateValidationService.ts # Validación de fechas
-└── types/
-    └── index.ts          # Tipos TypeScript
+├── components/          # Componentes reutilizables
+├── context/            # Context API (CartContext)
+├── screens/            # Pantallas de la aplicación
+├── services/           # Servicios (Firebase, Webpay)
+├── types/              # Definiciones de TypeScript
+└── __tests__/          # Pruebas unitarias
 ```
 
-## 🛠️ Tecnologías Utilizadas
+### 🔄 Flujo de Checkout
 
-- **React Native:** Framework principal
-- **TypeScript:** Tipado estático
-- **React Navigation:** Navegación entre pantallas
-- **AsyncStorage:** Persistencia de datos
-- **Context API:** Estado global
-- **Firebase:** Backend y servicios
-- **Webpay Plus:** Sistema de pagos
-- **React Native Vector Icons:** Iconografía
+1. **Selección de productos** → Carrito
+2. **Validación cliente** → Fecha/hora permitida
+3. **Validación servidor** → Stock disponible
+4. **Reserva de stock** → 15 minutos
+5. **Pago Webpay** → WebView
+6. **Callback** → Actualización estado
+7. **Resultado** → Confirmación o liberación
 
-## 🚀 Instalación y Ejecución
+## 🧪 Testing
 
-### Prerrequisitos
-- Node.js >= 18
-- React Native CLI
-- Android Studio (para Android)
-- Xcode (para iOS)
-- Firebase CLI
-- Cuenta de Transbank (para Webpay)
-
-### Instalación
-```bash
-# Clonar el repositorio
-git clone https://github.com/areyesfig/DimaniWeekends.git
-cd DimaniWeekends
-
-# Instalar dependencias
-npm install
-
-# Para iOS (macOS)
-cd ios && pod install && cd ..
-```
-
-### Configuración de Firebase
-
-1. **Crear proyecto en Firebase Console**
-2. **Habilitar servicios:**
-   - Firestore Database
-   - Cloud Functions
-   - Authentication (opcional)
-
-3. **Configurar Firestore:**
-```bash
-# Instalar Firebase CLI
-npm install -g firebase-tools
-
-# Login a Firebase
-firebase login
-
-# Inicializar proyecto
-firebase init
-
-# Seleccionar servicios:
-# - Firestore
-# - Functions
-# - Hosting (opcional)
-```
-
-4. **Configurar Remote Config:**
-```bash
-# Crear configuración de ventana de pedidos
-firebase functions:config:set orderwindow.starttime="10:00"
-firebase functions:config:set orderwindow.endtime="14:00"
-firebase functions:config:set orderwindow.alloweddays="[6,0]"
-firebase functions:config:set orderwindow.reservationttl="15"
-```
-
-### Despliegue de Cloud Functions
+### Ejecutar Pruebas
 
 ```bash
-# Desplegar funciones
-firebase deploy --only functions
-
-# Verificar funciones desplegadas
-firebase functions:list
-```
-
-### Configuración de Webpay Sandbox
-
-1. **Obtener credenciales de Transbank:**
-   - Commerce Code: `597055555532`
-   - API Key: `579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C`
-
-2. **Configurar URL de retorno:**
-   - URL: `dimaniweekends://payment-result`
-
-### Ejecución
-```bash
-# Iniciar Metro bundler
-npm start
-
-# Ejecutar en Android
-npm run android
-
-# Ejecutar en iOS
-npm run ios
-```
-
-## 📋 Checkpoints del Proyecto
-
-### ✅ Checkpoint 1: Catálogo y Carrito (Commit: cdd4f1e)
-- Sistema completo de catálogo de productos
-- Carrito de compras funcional
-- Navegación entre pantallas
-- Persistencia de datos
-- Interfaz moderna y responsive
-
-### ✅ Checkpoint 2: Checkout y Pago (Commit: feature/mejoras-app)
-- Sistema de checkout completo
-- Validaciones de fecha y horario
-- Integración con Webpay Plus
-- Reserva de stock
-- Cloud Functions para validaciones
-
-## 🧪 Pruebas Unitarias
-
-### Ejecutar pruebas:
-```bash
+# Todas las pruebas
 npm test
+
+# Pruebas específicas
+npm test dateValidationService.test.ts
+
+# Con coverage
+npm test -- --coverage
 ```
 
-### Pruebas implementadas:
-- Validación de fechas de entrega
-- Generación de fechas disponibles
-- Formateo de fechas
-- Validaciones de formulario
+### Pruebas Implementadas
 
-## 🔧 Configuración de Desarrollo
+- ✅ Validación de fechas y horarios
+- ✅ Generación de fechas disponibles
+- ✅ Formateo de fechas
+- ✅ Validaciones de ventana de pedidos
 
-### Variables de entorno:
+## 🔧 Cloud Functions
+
+### Funciones Implementadas
+
+1. **`validateOrderWindow`** - Validación de ventana de pedidos
+2. **`reserveStock`** - Reserva temporal de stock
+3. **`releaseExpiredOrders`** - Liberación automática de stock
+4. **`handleWebpayCallback`** - Procesamiento de pagos
+
+### Desplegar Functions
+
+```bash
+cd functions
+npm run build
+cd ..
+firebase deploy --only functions
+```
+
+## 📊 Base de Datos
+
+### Colecciones Firestore
+
+- **`products`** - Catálogo con stock en tiempo real
+- **`orders`** - Órdenes con estados y datos de pago
+- **`settings`** - Configuración de ventana y Webpay
+
+### Estados de Orden
+
+- `reserved` - Stock reservado, pendiente pago
+- `paid` - Pago exitoso
+- `cancelled` - Cancelada o expirada
+
+## 🔐 Configuración de Seguridad
+
+### Reglas Firestore
+
+```javascript
+// Lectura pública para productos y configuración
+// Escritura restringida para órdenes
+// Validaciones en Cloud Functions
+```
+
+### Validaciones
+
+- **Cliente:** Fecha/hora, formulario
+- **Servidor:** Stock, ventana de pedidos
+- **Transacciones:** Consistencia de datos
+
+## 🚀 Despliegue
+
+### Preparación para Producción
+
+1. **Webpay:** Cambiar a modo producción
+2. **Firebase:** Configurar reglas de seguridad
+3. **APIs:** Habilitar todas las APIs necesarias
+4. **Testing:** Ejecutar suite completa de pruebas
+
+### Variables de Entorno
+
 ```bash
 # Firebase
-FIREBASE_API_KEY=your_api_key
-FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_PROJECT_ID=dimaniweekends-app
 
 # Webpay
-WEBPAY_COMMERCE_CODE=597055555532
-WEBPAY_API_KEY=your_webpay_api_key
+WEBPAY_COMMERCE_CODE=tu_codigo_comercio
+WEBPAY_API_KEY=tu_api_key
+WEBPAY_ENVIRONMENT=production
 ```
 
-### Estructura de Firestore:
-```
-/settings
-  /orderWindow
-    - startTime: "10:00"
-    - endTime: "14:00"
-    - allowedDays: [6, 0]
-    - reservationTtlMinutes: 15
+## 📱 Pantallas
 
-/orders
-  /{orderId}
-    - userId: string
-    - items: array
-    - total: number
-    - status: string
-    - checkoutData: object
-    - createdAt: timestamp
-    - expiresAt: timestamp
-```
+### Flujo de Usuario
 
-## 🎯 Próximas Funcionalidades
+1. **HomeScreen** - Catálogo de productos
+2. **CartScreen** - Carrito y checkout
+3. **CheckoutScreen** - Formulario de entrega
+4. **PaymentScreen** - WebView de Webpay
+5. **PaymentResultScreen** - Resultado del pago
 
-- [ ] Sistema de autenticación de usuarios
-- [ ] Historial de pedidos
-- [ ] Notificaciones push
-- [ ] Geolocalización para delivery
-- [ ] Sistema de reseñas y calificaciones
-- [ ] Dashboard administrativo
-- [ ] Reportes de ventas
+## 🔍 Troubleshooting
+
+### Problemas Comunes
+
+**Error: "Firebase not initialized"**
+- Verificar archivos de configuración
+- Revisar credenciales de Firebase
+
+**Error: "Cloud Functions not found"**
+- Verificar despliegue de functions
+- Revisar logs en Firebase Console
+
+**Error: "Webpay callback failed"**
+- Verificar URL de callback
+- Revisar configuración de Webpay
+
+**Error: "Stock validation failed"**
+- Verificar datos en Firestore
+- Revisar Cloud Functions logs
+
+## 📈 Monitoreo
+
+### Logs Importantes
+
+- **Firebase Console:** Logs de Cloud Functions
+- **Google Cloud Console:** Logs de APIs
+- **App:** Console.log para debugging
+
+### Métricas a Monitorear
+
+- Órdenes por día/hora
+- Tasa de conversión
+- Errores de validación
+- Tiempo de respuesta de APIs
+
+## 🤝 Contribución
+
+1. Fork el proyecto
+2. Crear rama feature (`git checkout -b feature/AmazingFeature`)
+3. Commit cambios (`git commit -m 'Add AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abrir Pull Request
 
 ## 📄 Licencia
 
-Este proyecto es privado y desarrollado para DimaniWeekends.
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
 
-## 👨‍💻 Desarrollador
+## 📞 Soporte
 
-Desarrollado con ❤️ usando React Native, TypeScript y Firebase.
+- **Issues:** [GitHub Issues](https://github.com/areyesfig/DimaniWeekends/issues)
+- **Documentación:** [FIREBASE_SETUP.md](./FIREBASE_SETUP.md)
+- **Firebase Console:** https://console.firebase.google.com/project/dimaniweekends-app
+
+---
+
+**Desarrollado con ❤️ para DimaniWeekends**

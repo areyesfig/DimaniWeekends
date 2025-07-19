@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Reglas para configuración
+    match /settings/{document} {
+      allow read: if true;
+      allow write: if false; // Solo admin puede escribir
+    }
+    
+    // Reglas para órdenes
+    match /orders/{orderId} {
+      allow read, write: if true; // Para desarrollo, en producción sería más restrictivo
+    }
+    
+    // Reglas para productos
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if false; // Solo admin puede escribir
+    }
+  }
+} 
