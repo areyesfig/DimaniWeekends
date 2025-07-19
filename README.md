@@ -1,89 +1,126 @@
-# DimaniWeekends - React Native App
+# DimaniWeekends - App de Catálogo y Carrito de Compras
 
-Una aplicación simple de React Native que muestra "¡Hola Mundo!" como punto de partida.
+## 📱 Descripción
 
-## 🚀 Estado del Proyecto
+DimaniWeekends es una aplicación móvil desarrollada en React Native que permite a los usuarios explorar un catálogo de productos (empanadas y cachitos) y realizar pedidos a través de un carrito de compras integrado.
 
-✅ **Android**: Funcionando correctamente  
-⚠️ **iOS**: Requiere configuración adicional de CocoaPods
+## ✨ Funcionalidades Implementadas
 
-## 📱 Cómo Ejecutar
+### 🛍️ Catálogo de Productos
+- **Productos disponibles:**
+  - Empanada de Pino ($1,200)
+  - Empanada Napolitana ($1,300)
+  - Empanada de Queso y Jamón ($1,400)
+  - Cachito de Jamón ($800)
+  - Cachito de Queso ($900)
 
-### Para Android
+- **Características del catálogo:**
+  - Filtros por categoría (Todos, Empanadas, Cachitos)
+  - Información detallada de cada producto
+  - Stock en tiempo real
+  - Precios formateados en pesos chilenos
+  - Indicador de productos en el carrito
 
-1. **Asegúrate de tener un emulador de Android ejecutándose** o un dispositivo conectado
-2. **Ejecuta el proyecto**:
-   ```bash
-   npx react-native run-android
-   ```
+### 🛒 Carrito de Compras
+- **Funcionalidades:**
+  - Agregar productos con validación de stock
+  - Modificar cantidades (+ y -)
+  - Eliminar productos automáticamente
+  - Cálculo automático del total
+  - Persistencia de datos en AsyncStorage
+  - Badge visual con cantidad de items
+  - Confirmación de pedidos
 
-### Para iOS
+### 🎨 Interfaz de Usuario
+- **Navegación:** React Navigation con stack navigator
+- **Diseño:** Cards modernas con sombras y colores atractivos
+- **Responsive:** Adaptado para diferentes tamaños de pantalla
+- **Feedback:** Alertas y confirmaciones para mejor UX
 
-**Nota**: Actualmente hay un problema con la instalación de CocoaPods debido a un error de checksum con boost. Para solucionarlo:
+## 🏗️ Arquitectura del Proyecto
 
-1. **Abre Xcode**:
-   ```bash
-   open ios/DimaniWeekends.xcworkspace
-   ```
-   
-2. **O ejecuta desde la línea de comandos** (después de solucionar CocoaPods):
-   ```bash
-   npx react-native run-ios
-   ```
+```
+src/
+├── components/           # Componentes reutilizables
+│   ├── ProductCard.tsx   # Tarjeta de producto
+│   ├── CartItem.tsx      # Item del carrito
+│   └── CartBadge.tsx     # Badge del carrito
+├── context/
+│   └── CartContext.tsx   # Contexto global del carrito
+├── screens/              # Pantallas de la aplicación
+│   ├── CatalogScreen.tsx # Pantalla del catálogo
+│   └── CartScreen.tsx    # Pantalla del carrito
+├── services/
+│   └── productService.ts # Servicio de productos
+└── types/
+    └── index.ts          # Tipos TypeScript
+```
 
-## 🔧 Solución de Problemas
+## 🛠️ Tecnologías Utilizadas
 
-### Problema con CocoaPods (iOS)
+- **React Native:** Framework principal
+- **TypeScript:** Tipado estático
+- **React Navigation:** Navegación entre pantallas
+- **AsyncStorage:** Persistencia de datos
+- **Context API:** Estado global
+- **React Native Vector Icons:** Iconografía
 
-Si encuentras errores con boost durante la instalación de CocoaPods:
+## 🚀 Instalación y Ejecución
 
-1. **Limpia la caché de CocoaPods**:
-   ```bash
-   cd ios
-   pod cache clean --all
-   ```
+### Prerrequisitos
+- Node.js >= 18
+- React Native CLI
+- Android Studio (para Android)
+- Xcode (para iOS)
 
-2. **Reinstala las dependencias**:
-   ```bash
-   pod install --repo-update
-   ```
-
-3. **Si el problema persiste**, intenta:
-   ```bash
-   cd ios
-   rm -rf Pods Podfile.lock
-   pod install
-   ```
-
-### Verificar el Entorno
-
-Para verificar que todo esté configurado correctamente:
-
+### Instalación
 ```bash
-npx react-native doctor
+# Clonar el repositorio
+git clone <repository-url>
+cd DimaniWeekends
+
+# Instalar dependencias
+npm install
+
+# Para iOS (macOS)
+cd ios && pod install && cd ..
 ```
 
-## 📁 Estructura del Proyecto
+### Ejecución
+```bash
+# Iniciar Metro bundler
+npm start
 
+# Ejecutar en Android
+npm run android
+
+# Ejecutar en iOS
+npm run ios
 ```
-DimaniWeekends/
-├── android/          # Configuración de Android
-├── ios/             # Configuración de iOS
-├── App.tsx          # Componente principal (Hola Mundo)
-├── index.js         # Punto de entrada
-└── package.json     # Dependencias del proyecto
-```
 
-## 🎯 Próximos Pasos
+## 📋 Checkpoints del Proyecto
 
-1. **Android**: El proyecto está listo para desarrollo
-2. **iOS**: Resolver el problema de CocoaPods para desarrollo completo
-3. **Desarrollo**: Comenzar a agregar funcionalidades específicas de DimaniWeekends
+### ✅ Checkpoint 1: Catálogo y Carrito (Commit: cdd4f1e)
+- Sistema completo de catálogo de productos
+- Carrito de compras funcional
+- Navegación entre pantallas
+- Persistencia de datos
+- Interfaz moderna y responsive
 
-## 📞 Soporte
+## 🎯 Próximas Funcionalidades
 
-Si encuentras problemas, verifica:
-- Que tienes Node.js instalado
-- Que tienes React Native CLI configurado
-- Que tienes Android Studio (para Android) y Xcode (para iOS) instalados
-- Que los emuladores están ejecutándose correctamente
+- [ ] Integración con Firebase para backend
+- [ ] Sistema de autenticación de usuarios
+- [ ] Historial de pedidos
+- [ ] Notificaciones push
+- [ ] Pago en línea
+- [ ] Geolocalización para delivery
+- [ ] Sistema de reseñas y calificaciones
+
+## 📄 Licencia
+
+Este proyecto es privado y desarrollado para DimaniWeekends.
+
+## 👨‍💻 Desarrollador
+
+Desarrollado con ❤️ usando React Native y TypeScript.
