@@ -11,7 +11,7 @@ import {
 import { CartItemComponent } from '../components/CartItem';
 import { useCart } from '../context/CartContext';
 
-export const CartScreen: React.FC = () => {
+export const CartScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
   const { state, clearCart } = useCart();
 
   const formatPrice = (price: number): string => {
@@ -99,8 +99,8 @@ export const CartScreen: React.FC = () => {
               <Text style={styles.totalPrice}>{formatPrice(state.total)}</Text>
             </View>
 
-            <TouchableOpacity style={styles.checkoutButton} onPress={handleCheckout}>
-              <Text style={styles.checkoutButtonText}>Confirmar Pedido</Text>
+            <TouchableOpacity style={styles.checkoutButton} onPress={() => navigation.navigate('Checkout')}>
+              <Text style={styles.checkoutButtonText}>Continuar al Checkout</Text>
             </TouchableOpacity>
           </View>
         </>

@@ -1,10 +1,14 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Cart, CartItem, Product } from '../types';
+import { Cart, CartItem, Product, CheckoutForm, Order } from '../types';
+import { validateOrderWindow, reserveStock } from '../services/firebaseService';
+import { validateDeliveryDateTime, validatePreparationTime } from '../services/dateValidationService';
 
 interface CartState {
   items: CartItem[];
   total: number;
+  isCheckingOut: boolean;
+  checkoutError?: string;
 }
 
 type CartAction =
@@ -12,7 +16,11 @@ type CartAction =
   | { type: 'REMOVE_ITEM'; payload: string }
   | { type: 'UPDATE_QUANTITY'; payload: { productId: string; quantity: number } }
   | { type: 'CLEAR_CART' }
-  | { type: 'LOAD_CART'; payload: CartState };
+  | { type: 'LOAD_CART'; payload: CartState }
+  | { type: 'START_CHECKOUT' }
+  | { type: 'CHECKOUT_SUCCESS'; payload: { orderId: string } }
+  | { type: 'CHECKOUT_ERROR'; payload: string }
+  | { type: 'RESET_CHECKOUT' };
 
 const CartContext = createContext<{
   state: CartState;
@@ -21,6 +29,9 @@ const CartContext = createContext<{
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
   getItemQuantity: (productId: string) => number;
+  checkout: (checkoutData: CheckoutForm, orderWindow: any) => Promise<{ success: boolean; orderId?: string; error?: string }>;
+  isCheckingOut: boolean;
+  checkoutError?: string;
 } | undefined>(undefined);
 
 const cartReducer = (state: CartState, action: CartAction): CartState => {
@@ -78,12 +89,44 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
     
     case 'CLEAR_CART':
       return {
+        ...state,
         items: [],
-        total: 0
+        total: 0,
+        isCheckingOut: false,
+        checkoutError: undefined
       };
       
     case 'LOAD_CART':
       return action.payload;
+      
+    case 'START_CHECKOUT':
+      return {
+        ...state,
+        isCheckingOut: true,
+        checkoutError: undefined
+      };
+      
+    case 'CHECKOUT_SUCCESS':
+      return {
+        ...state,
+        isCheckingOut: false,
+        items: [],
+        total: 0
+      };
+      
+    case 'CHECKOUT_ERROR':
+      return {
+        ...state,
+        isCheckingOut: false,
+        checkoutError: action.payload
+      };
+      
+    case 'RESET_CHECKOUT':
+      return {
+        ...state,
+        isCheckingOut: false,
+        checkoutError: undefined
+      };
       
     default:
       return state;
@@ -93,7 +136,8 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, {
     items: [],
-    total: 0
+    total: 0,
+    isCheckingOut: false
   });
 
   useEffect(() => {
@@ -102,13 +146,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     saveCart();
-  }, [state]);
+  }, [state.items, state.total]);
 
   const loadCart = async () => {
     try {
       const savedCart = await AsyncStorage.getItem('cart');
       if (savedCart) {
-        dispatch({ type: 'LOAD_CART', payload: JSON.parse(savedCart) });
+        const cartData = JSON.parse(savedCart);
+        dispatch({ type: 'LOAD_CART', payload: { ...cartData, isCheckingOut: false } });
       }
     } catch (error) {
       console.error('Error loading cart:', error);
@@ -117,7 +162,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const saveCart = async () => {
     try {
-      await AsyncStorage.setItem('cart', JSON.stringify(state));
+      const cartData = {
+        items: state.items,
+        total: state.total
+      };
+      await AsyncStorage.setItem('cart', JSON.stringify(cartData));
     } catch (error) {
       console.error('Error saving cart:', error);
     }
@@ -146,6 +195,66 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return item ? item.quantity : 0;
   };
 
+  const checkout = async (
+    checkoutData: CheckoutForm, 
+    orderWindow: any
+  ): Promise<{ success: boolean; orderId?: string; error?: string }> => {
+    try {
+      dispatch({ type: 'START_CHECKOUT' });
+
+      // Validar que hay items en el carrito
+      if (state.items.length === 0) {
+        dispatch({ type: 'CHECKOUT_ERROR', payload: 'El carrito está vacío' });
+        return { success: false, error: 'El carrito está vacío' };
+      }
+
+      // Validar fecha y horario de entrega
+      const dateValidation = validateDeliveryDateTime(checkoutData.deliveryDateTime, orderWindow);
+      if (!dateValidation.isValid) {
+        dispatch({ type: 'CHECKOUT_ERROR', payload: dateValidation.message || 'Fecha inválida' });
+        return { success: false, error: dateValidation.message };
+      }
+
+      // Validar tiempo de preparación
+      if (!validatePreparationTime(checkoutData.deliveryDateTime)) {
+        dispatch({ type: 'CHECKOUT_ERROR', payload: 'Se requiere mínimo 2 horas de anticipación' });
+        return { success: false, error: 'Se requiere mínimo 2 horas de anticipación' };
+      }
+
+      // Validar ventana de pedidos en el servidor
+      const validateResult = await validateOrderWindow({
+        deliveryDateTime: checkoutData.deliveryDateTime.toISOString(),
+        items: state.items
+      });
+
+      if (!validateResult.ok) {
+        dispatch({ type: 'CHECKOUT_ERROR', payload: validateResult.message || 'Error validando pedido' });
+        return { success: false, error: validateResult.message };
+      }
+
+      // Reservar stock
+      const reserveResult = await reserveStock({
+        items: state.items,
+        orderData: checkoutData,
+        userId: 'user123' // En un entorno real, esto vendría del auth
+      });
+
+      if (!reserveResult.reserved) {
+        dispatch({ type: 'CHECKOUT_ERROR', payload: 'Error reservando stock' });
+        return { success: false, error: 'Error reservando stock' };
+      }
+
+      // Éxito
+      dispatch({ type: 'CHECKOUT_SUCCESS', payload: { orderId: reserveResult.orderId } });
+      return { success: true, orderId: reserveResult.orderId };
+
+    } catch (error: any) {
+      const errorMessage = error.message || 'Error en el proceso de checkout';
+      dispatch({ type: 'CHECKOUT_ERROR', payload: errorMessage });
+      return { success: false, error: errorMessage };
+    }
+  };
+
   return (
     <CartContext.Provider value={{
       state,
@@ -153,7 +262,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       removeItem,
       updateQuantity,
       clearCart,
-      getItemQuantity
+      getItemQuantity,
+      checkout,
+      isCheckingOut: state.isCheckingOut,
+      checkoutError: state.checkoutError
     }}>
       {children}
     </CartContext.Provider>
