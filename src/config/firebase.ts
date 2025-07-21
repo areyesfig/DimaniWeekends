@@ -1,10 +1,11 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
+import { API_KEY } from '@env';
 
 // Configuración de Firebase para DimaniWeekends
 const firebaseConfig = {
-  apiKey: 'AIzaSyDo8KZCyrzvK36HSaoCbUdqx5uUJaOoPPk',
+  apiKey: API_KEY,
   authDomain: 'dimaniweekends-app.firebaseapp.com',
   projectId: 'dimaniweekends-app',
   storageBucket: 'dimaniweekends-app.firebasestorage.app',
