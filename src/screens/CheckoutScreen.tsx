@@ -14,7 +14,7 @@ import DateTimePicker from 'react-native-date-picker';
 import { useCart } from '../context/CartContext';
 import { getOrderWindowConfig } from '../services/firebaseService';
 import { generateAvailableDates, formatDeliveryDate, validateDeliveryDateTime } from '../services/dateValidationService';
-import { CheckoutForm, OrderWindow } from '../types';
+import { CheckoutForm, CheckoutFormErrors, OrderWindow } from '../types';
 
 export const CheckoutScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
   const { state, checkout, isCheckingOut, checkoutError } = useCart();
@@ -31,7 +31,7 @@ export const CheckoutScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
     deliveryDateTime: new Date(),
   });
 
-  const [errors, setErrors] = useState<Partial<CheckoutForm>>({});
+  const [errors, setErrors] = useState<CheckoutFormErrors>({});
 
   useEffect(() => {
     loadOrderWindowConfig();
@@ -59,7 +59,7 @@ export const CheckoutScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
   };
 
   const validateForm = (): boolean => {
-    const newErrors: Partial<CheckoutForm> = {};
+    const newErrors: CheckoutFormErrors = {};
 
     if (!formData.fullName.trim()) {
       newErrors.fullName = 'El nombre es requerido';
@@ -128,7 +128,7 @@ export const CheckoutScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
     <View style={styles.fieldContainer}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
-        style={[styles.input, errors[field] && styles.inputError]}
+        style={[styles.input, errors[field] ? styles.inputError : null]}
         placeholder={placeholder}
         value={formData[field] as string || ''}
         onChangeText={(text) => {
@@ -162,7 +162,7 @@ export const CheckoutScreen: React.FC<{ navigation: any }> = ({ navigation }) =>
           <View style={styles.fieldContainer}>
             <Text style={styles.label}>Fecha y Hora de Entrega</Text>
             <TouchableOpacity
-              style={[styles.dateButton, errors.deliveryDateTime && styles.inputError]}
+              style={[styles.dateButton, errors.deliveryDateTime ? styles.inputError : null]}
               onPress={() => setShowDatePicker(true)}
             >
               <Text style={styles.dateButtonText}>

@@ -17,7 +17,20 @@ import { PaymentResultScreen } from './src/screens/PaymentResultScreen';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import { CartBadge } from './src/components/CartBadge';
 
-const Stack = createStackNavigator();
+type RootStackParamList = {
+  Catalog: undefined;
+  Cart: undefined;
+  Checkout: undefined;
+  Payment: { orderId: string };
+  PaymentResult: {
+    token?: string;
+    orderId?: string;
+    response?: string;
+    success: boolean;
+  };
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 function App(): React.JSX.Element {
   return (

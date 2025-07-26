@@ -54,6 +54,14 @@ export interface CheckoutForm {
   deliveryDateTime: Date;
 }
 
+export interface CheckoutFormErrors {
+  fullName?: string;
+  addressLine?: string;
+  commune?: string;
+  phone?: string;
+  deliveryDateTime?: string;
+}
+
 export interface Order {
   id: string;
   userId: string;
