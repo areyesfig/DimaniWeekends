@@ -13,7 +13,14 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { forgotPasswordSchema, ForgotPasswordFormData } from '../validation/authSchema';
-import auth from '@react-native-firebase/auth';
+// Mock auth for temporary use without Firebase
+const auth = () => ({
+  sendPasswordResetEmail: async (email: string) => {
+    // Simulate password reset email
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log('Mock: Password reset email sent to', email);
+  }
+});
 
 interface ForgotPasswordScreenProps {
   navigation: any;

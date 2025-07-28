@@ -13,7 +13,7 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema, SignUpFormData } from '../validation/authSchema';
-import { signUp } from '../../../shared/services/firebase';
+import { useAuth } from '../../../context/AuthContext';
 
 interface SignUpScreenProps {
   navigation: any;
@@ -21,6 +21,7 @@ interface SignUpScreenProps {
 
 export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const { signUp } = useAuth();
   
   const {
     control,

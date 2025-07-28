@@ -11,10 +11,10 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3ACF131F8ABF887B5EF130C0 /* Pods_DimaniWeekends_DimaniWeekendsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93A5F397223C9179E0F9BB5 /* Pods_DimaniWeekends_DimaniWeekendsTests.framework */; };
 		4134F98D131CAD717C0B7663 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 8B5A596C7C470548862EEB83 /* PrivacyInfo.xcprivacy */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		E8953166DD88E7E4CE98B314 /* libPods-DimaniWeekends-DimaniWeekendsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9D99AF1AAEC13E6BA1DDDE /* libPods-DimaniWeekends-DimaniWeekendsTests.a */; };
-		FC07C1E57C163DEC0E29AB2F /* libPods-DimaniWeekends.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFD95DB74B22A90F1B0E1BC /* libPods-DimaniWeekends.a */; };
+		B90AE2C16145E96C3E465A54 /* Pods_DimaniWeekends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1CD61BE340DDDBD512F2A6 /* Pods_DimaniWeekends.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,14 +37,14 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DimaniWeekends/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DimaniWeekends/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = DimaniWeekends/main.m; sourceTree = "<group>"; };
-		2F9D99AF1AAEC13E6BA1DDDE /* libPods-DimaniWeekends-DimaniWeekendsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DimaniWeekends-DimaniWeekendsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BFD95DB74B22A90F1B0E1BC /* libPods-DimaniWeekends.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DimaniWeekends.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4FFA945CFC7A6B3001788E80 /* Pods-DimaniWeekends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DimaniWeekends.release.xcconfig"; path = "Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends.release.xcconfig"; sourceTree = "<group>"; };
+		6511BF2BB33142AF83317418 /* Pods-DimaniWeekends-DimaniWeekendsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DimaniWeekends-DimaniWeekendsTests.release.xcconfig"; path = "Target Support Files/Pods-DimaniWeekends-DimaniWeekendsTests/Pods-DimaniWeekends-DimaniWeekendsTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = DimaniWeekends/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8B1CD61BE340DDDBD512F2A6 /* Pods_DimaniWeekends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DimaniWeekends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5A596C7C470548862EEB83 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = DimaniWeekends/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		A5A8048AA94DEE276AE4FB6E /* Pods-DimaniWeekends-DimaniWeekendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DimaniWeekends-DimaniWeekendsTests.debug.xcconfig"; path = "Target Support Files/Pods-DimaniWeekends-DimaniWeekendsTests/Pods-DimaniWeekends-DimaniWeekendsTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C7E2BA513CEF62F6B9F5A259 /* Pods-DimaniWeekends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DimaniWeekends.debug.xcconfig"; path = "Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends.debug.xcconfig"; sourceTree = "<group>"; };
-		D2617565111C2DEDA7586BEE /* Pods-DimaniWeekends-DimaniWeekendsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DimaniWeekends-DimaniWeekendsTests.release.xcconfig"; path = "Target Support Files/Pods-DimaniWeekends-DimaniWeekendsTests/Pods-DimaniWeekends-DimaniWeekendsTests.release.xcconfig"; sourceTree = "<group>"; };
+		8E7E60141DE047B0A105C7D6 /* Pods-DimaniWeekends-DimaniWeekendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DimaniWeekends-DimaniWeekendsTests.debug.xcconfig"; path = "Target Support Files/Pods-DimaniWeekends-DimaniWeekendsTests/Pods-DimaniWeekends-DimaniWeekendsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B93A5F397223C9179E0F9BB5 /* Pods_DimaniWeekends_DimaniWeekendsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DimaniWeekends_DimaniWeekendsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA4472529F5D68D62637AE4A /* Pods-DimaniWeekends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DimaniWeekends.release.xcconfig"; path = "Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends.release.xcconfig"; sourceTree = "<group>"; };
+		E31BD689F6EFD9F791429889 /* Pods-DimaniWeekends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DimaniWeekends.debug.xcconfig"; path = "Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8953166DD88E7E4CE98B314 /* libPods-DimaniWeekends-DimaniWeekendsTests.a in Frameworks */,
+				3ACF131F8ABF887B5EF130C0 /* Pods_DimaniWeekends_DimaniWeekendsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC07C1E57C163DEC0E29AB2F /* libPods-DimaniWeekends.a in Frameworks */,
+				B90AE2C16145E96C3E465A54 /* Pods_DimaniWeekends.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,8 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				3BFD95DB74B22A90F1B0E1BC /* libPods-DimaniWeekends.a */,
-				2F9D99AF1AAEC13E6BA1DDDE /* libPods-DimaniWeekends-DimaniWeekendsTests.a */,
+				8B1CD61BE340DDDBD512F2A6 /* Pods_DimaniWeekends.framework */,
+				B93A5F397223C9179E0F9BB5 /* Pods_DimaniWeekends_DimaniWeekendsTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,10 +143,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C7E2BA513CEF62F6B9F5A259 /* Pods-DimaniWeekends.debug.xcconfig */,
-				4FFA945CFC7A6B3001788E80 /* Pods-DimaniWeekends.release.xcconfig */,
-				A5A8048AA94DEE276AE4FB6E /* Pods-DimaniWeekends-DimaniWeekendsTests.debug.xcconfig */,
-				D2617565111C2DEDA7586BEE /* Pods-DimaniWeekends-DimaniWeekendsTests.release.xcconfig */,
+				E31BD689F6EFD9F791429889 /* Pods-DimaniWeekends.debug.xcconfig */,
+				CA4472529F5D68D62637AE4A /* Pods-DimaniWeekends.release.xcconfig */,
+				8E7E60141DE047B0A105C7D6 /* Pods-DimaniWeekends-DimaniWeekendsTests.debug.xcconfig */,
+				6511BF2BB33142AF83317418 /* Pods-DimaniWeekends-DimaniWeekendsTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -158,12 +158,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "DimaniWeekendsTests" */;
 			buildPhases = (
-				A0AE4197CDDCC7D979C8E5BD /* [CP] Check Pods Manifest.lock */,
+				8A7EA8F609A92EB401C6E34C /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				A9ECB0E1935EFE83AB7DD850 /* [CP] Embed Pods Frameworks */,
-				AA9D238A84A2C41625BA2157 /* [CP] Copy Pods Resources */,
+				F9E382A5B2138537A3E3920E /* [CP] Embed Pods Frameworks */,
+				662E4AEFDDA032B5E6BD7246 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,13 +179,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "DimaniWeekends" */;
 			buildPhases = (
-				195551591CE69D6B571BFE18 /* [CP] Check Pods Manifest.lock */,
+				45F294C61B8C2FA8972B7AD0 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				9271A6458EC6DF32AB9706A3 /* [CP] Embed Pods Frameworks */,
-				16E22D35146BE812ECE15F9A /* [CP] Copy Pods Resources */,
+				1D351D49EA6E803C8CC12C53 /* [CP] Embed Pods Frameworks */,
+				E2B3A2C87E34985ADE81D8C6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -269,24 +269,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		16E22D35146BE812ECE15F9A /* [CP] Copy Pods Resources */ = {
+		1D351D49EA6E803C8CC12C53 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		195551591CE69D6B571BFE18 /* [CP] Check Pods Manifest.lock */ = {
+		45F294C61B8C2FA8972B7AD0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -308,24 +308,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9271A6458EC6DF32AB9706A3 /* [CP] Embed Pods Frameworks */ = {
+		662E4AEFDDA032B5E6BD7246 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends-DimaniWeekendsTests/Pods-DimaniWeekends-DimaniWeekendsTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends-DimaniWeekendsTests/Pods-DimaniWeekends-DimaniWeekendsTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends-DimaniWeekendsTests/Pods-DimaniWeekends-DimaniWeekendsTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A0AE4197CDDCC7D979C8E5BD /* [CP] Check Pods Manifest.lock */ = {
+		8A7EA8F609A92EB401C6E34C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -347,7 +347,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A9ECB0E1935EFE83AB7DD850 /* [CP] Embed Pods Frameworks */ = {
+		E2B3A2C87E34985ADE81D8C6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends/Pods-DimaniWeekends-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9E382A5B2138537A3E3920E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -362,23 +379,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends-DimaniWeekendsTests/Pods-DimaniWeekends-DimaniWeekendsTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AA9D238A84A2C41625BA2157 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends-DimaniWeekendsTests/Pods-DimaniWeekends-DimaniWeekendsTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends-DimaniWeekendsTests/Pods-DimaniWeekends-DimaniWeekendsTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DimaniWeekends-DimaniWeekendsTests/Pods-DimaniWeekends-DimaniWeekendsTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -414,7 +414,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A5A8048AA94DEE276AE4FB6E /* Pods-DimaniWeekends-DimaniWeekendsTests.debug.xcconfig */;
+			baseConfigurationReference = 8E7E60141DE047B0A105C7D6 /* Pods-DimaniWeekends-DimaniWeekendsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -441,7 +441,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2617565111C2DEDA7586BEE /* Pods-DimaniWeekends-DimaniWeekendsTests.release.xcconfig */;
+			baseConfigurationReference = 6511BF2BB33142AF83317418 /* Pods-DimaniWeekends-DimaniWeekendsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -465,7 +465,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7E2BA513CEF62F6B9F5A259 /* Pods-DimaniWeekends.debug.xcconfig */;
+			baseConfigurationReference = E31BD689F6EFD9F791429889 /* Pods-DimaniWeekends.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -492,7 +492,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4FFA945CFC7A6B3001788E80 /* Pods-DimaniWeekends.release.xcconfig */;
+			baseConfigurationReference = CA4472529F5D68D62637AE4A /* Pods-DimaniWeekends.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -564,6 +564,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
@@ -633,6 +644,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
