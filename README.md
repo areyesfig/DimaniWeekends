@@ -50,7 +50,22 @@ cd DimaniWeekends
 npm install
 ```
 
-### 2. Configurar Firebase
+### 2. 🔒 Configurar Variables de Entorno
+
+**⚠️ IMPORTANTE:** Lee [SECURITY.md](./SECURITY.md) antes de continuar.
+
+1. Crear archivo `.env` en la raíz del proyecto:
+```bash
+cp .env.example .env
+```
+
+2. Configurar las variables en `.env`:
+```env
+API_KEY=tu_firebase_api_key_aqui
+WEBPAY_API_KEY=tu_webpay_api_key_aqui
+```
+
+### 3. Configurar Firebase
 
 **IMPORTANTE:** Sigue las instrucciones detalladas en [FIREBASE_SETUP.md](./FIREBASE_SETUP.md)
 
@@ -59,14 +74,16 @@ npm install
 3. Desplegar Firestore y Cloud Functions
 4. Configurar datos iniciales
 
-### 3. Configurar Firebase en la App
+### 4. Configurar Firebase en la App
 
 1. Descargar `google-services.json` desde Firebase Console
 2. Colocar en `android/app/google-services.json`
 3. Descargar `GoogleService-Info.plist` desde Firebase Console
 4. Colocar en `ios/DimaniWeekends/GoogleService-Info.plist`
 
-### 4. Ejecutar la Aplicación
+**⚠️ SEGURIDAD:** Estos archivos están en `.gitignore` y NO deben subirse a GitHub.
+
+### 5. Ejecutar la Aplicación
 
 ```bash
 # Android
@@ -248,10 +265,29 @@ WEBPAY_ENVIRONMENT=production
 
 Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
 
+## 🔒 Seguridad
+
+**⚠️ IMPORTANTE:** Lee [SECURITY.md](./SECURITY.md) para las mejores prácticas de seguridad.
+
+### Protección de Datos Sensibles
+
+- **Variables de entorno** en archivo `.env` (NO subir a GitHub)
+- **Archivos de Firebase** en `.gitignore`
+- **Claves API** protegidas y rotadas regularmente
+- **Validaciones** cliente y servidor
+
+### Si Encuentras una Exposición de Seguridad
+
+1. **Reporta inmediatamente** al equipo
+2. **Revoca las claves** comprometidas
+3. **Ejecuta el script de limpieza:** `./clean-api-keys.sh`
+4. **Genera nuevas claves** y actualiza configuración
+
 ## 📞 Soporte
 
 - **Issues:** [GitHub Issues](https://github.com/areyesfig/DimaniWeekends/issues)
 - **Documentación:** [FIREBASE_SETUP.md](./FIREBASE_SETUP.md)
+- **Seguridad:** [SECURITY.md](./SECURITY.md)
 - **Firebase Console:** https://console.firebase.google.com/project/dimaniweekends-app
 
 ---

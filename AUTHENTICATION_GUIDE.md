@@ -92,9 +92,13 @@ interface AuthContextType {
 ## 🔧 Configuración
 
 ### Variables de Entorno
+Crea un archivo `.env` en la raíz del proyecto con las siguientes variables:
+
 ```env
-API_KEY=AIzaSyDo8KZCyrzvK36HSaoCbUdqx5uUJaOoPPk
+API_KEY=tu_firebase_api_key_aqui
 ```
+
+**⚠️ IMPORTANTE:** Nunca subas el archivo `.env` a GitHub. Está incluido en `.gitignore`.
 
 ### Firebase Config
 ```typescript

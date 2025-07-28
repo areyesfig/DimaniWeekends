@@ -64,3 +64,18 @@ yarn-error.log
 
 # testing
 /coverage
+
+# Environment variables and sensitive data
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Firebase configuration files
+google-services.json
+GoogleService-Info.plist
+
+# API Keys and sensitive configuration
+**/google-services.json
+**/GoogleService-Info.plist
