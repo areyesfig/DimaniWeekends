@@ -1,44 +1,61 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { ActivityIndicator, View, StyleSheet } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAuth } from '../context/AuthContext';
-import { AuthStack } from '../features/auth/navigation/AuthStack';
-import { MainStack } from './MainStack';
+import { SignInScreen } from '../features/auth/screens/SignInScreen';
+import { CatalogScreen } from '../screens/CatalogScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
-export const AppNavigator: React.FC = () => {
-  const { user, isLoading } = useAuth();
-
-  if (isLoading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#4CAF50" />
-      </View>
-    );
-  }
-
+const MainTabs: React.FC = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {user ? (
-          // Usuario autenticado - mostrar pantallas principales
-          <Stack.Screen name="Main" component={MainStack} />
-        ) : (
-          // Usuario no autenticado - mostrar pantallas de autenticación
-          <Stack.Screen name="Auth" component={AuthStack} />
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName: string;
+
+          if (route.name === 'Catalog') {
+            iconName = 'store';
+          } else if (route.name === 'Settings') {
+            iconName = 'settings';
+          } else {
+            iconName = 'home';
+          }
+
+          return <Icon name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: '#007AFF',
+        tabBarInactiveTintColor: 'gray',
+      })}
+    >
+      <Tab.Screen 
+        name="Catalog" 
+        component={CatalogScreen}
+        options={{ title: 'Productos' }}
+      />
+      <Tab.Screen 
+        name="Settings" 
+        component={SettingsScreen}
+        options={{ title: 'Configuración' }}
+      />
+    </Tab.Navigator>
   );
 };
 
-const styles = StyleSheet.create({
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-}); 
+const AppNavigator: React.FC = () => {
+  const { user, isConnected } = useAuth();
+
+  // Navegación simple basada en estado
+  if (!isConnected) {
+    return <SignInScreen />;
+  }
+
+  if (!user) {
+    return <SignInScreen />;
+  }
+
+  return <MainTabs />;
+};
+
+export default AppNavigator; 
