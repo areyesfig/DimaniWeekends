@@ -4,12 +4,19 @@
  * Script para limpiar la sesión local de Supabase
  * Útil cuando se elimina un usuario de la base de datos pero la app sigue funcionando
  */
+require('dotenv').config();
 
 const { createClient } = require('@supabase/supabase-js');
 
 // Configuración de Supabase (debe coincidir con src/config/supabase.ts)
-const supabaseUrl = 'https://pijjdldsyeqiobugwkuv.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBpampkbGRzeWVxaW9idWd3a3V2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM5MjgwNzgsImV4cCI6MjA2OTUwNDA3OH0.JrlGMYV9Cak7V1KuyGXa5pZ91rY1PQnWD9iyUU9PuVo';
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error('❌ Error: Variables de entorno SUPABASE_URL y SUPABASE_ANON_KEY no configuradas');
+  console.error('🔧 Asegúrate de crear el archivo .env con las variables necesarias');
+  process.exit(1);
+}
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
